@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>মনের জানালা | বাংলা প্রেমের কবিতা</title>
+  <meta name="description" content="মনের জানালা—বাংলা প্রেমের কবিতা, অনুভূতির কবিতা, স্মৃতি, ভালোবাসা ও মনের না বলা কথার একটি সুন্দর ব্যক্তিগত কবিতার ঠিকানা।">
+  <!-- Google Font (Bengali + English) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@300;400;600;700&family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Serif Bengali', 'Inter', serif;
+      background: #f8f4f0;
+      color: #1e1a1a;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== COLOR PALETTE ===== */
+    :root {
+      --primary: #2c3e50;
+      --secondary: #8e44ad;
+      --accent: #e67e22;
+      --soft-bg: #fdfcf9;
+      --card-bg: #ffffff;
+      --text-dark: #1e1a1a;
+      --text-soft: #4a3f3a;
+      --border-light: #eae3de;
+      --shadow: rgba(44, 62, 80, 0.06);
+      --gradient-start: #f5f0eb;
+      --gradient-end: #ede7e0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== TOP SCROLLING TEXT - SLOWER SPEED ===== */
+    .scrolling-bar {
+      background: var(--primary);
+      color: #f0ece6;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .scrolling-bar .track {
+      display: inline-block;
+      animation: scrollText 35s linear infinite;
+      padding-left: 100%;
+    }
+    .scrolling-bar span {
+      margin: 0 2.5rem;
+      font-weight: 300;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* header */
+    header {
+      background: rgba(255, 252, 249, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(44, 62, 80, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .logo i {
+      margin-right: 6px;
+      color: var(--secondary);
+    }
+    nav {
+      display: flex;
+      gap: 1.8rem;
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--text-soft);
+    }
+    nav a {
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    nav a:hover {
+      color: var(--secondary);
+      border-bottom-color: var(--secondary);
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: var(--primary);
+      cursor: pointer;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: white;
+      padding: 1.5rem;
+      gap: 1rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+      margin-top: 10px;
+    }
+    .mobile-menu a {
+      font-size: 1.1rem;
+      border-bottom: 1px solid #f0e3dd;
+      padding: 8px 0;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
+      padding: 3.5rem 0 4rem;
+      text-align: center;
+      border-radius: 0 0 60px 60px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "✦ ✦ ✦";
+      font-size: 2.5rem;
+      color: rgba(142, 68, 173, 0.04);
+      position: absolute;
+      top: 10%;
+      left: 5%;
+      transform: rotate(-8deg);
+      white-space: pre;
+      letter-spacing: 20px;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -1px;
+    }
+    .hero .tagline {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      font-weight: 300;
+      margin: 0.5rem 0 1rem;
+    }
+    .hero p {
+      max-width: 680px;
+      margin: 1.2rem auto;
+      color: var(--text-soft);
+      font-size: 1.15rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.8rem;
+    }
+    .btn {
+      background: var(--secondary);
+      color: white;
+      padding: 0.7rem 2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      transition: 0.2s;
+      border: 1px solid transparent;
+      box-shadow: 0 4px 10px rgba(142, 68, 173, 0.15);
+      font-size: 1rem;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--secondary);
+      color: var(--secondary);
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: var(--secondary);
+      color: white;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(142, 68, 173, 0.2);
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 2.5rem 0 1.8rem;
+      border-left: 6px solid var(--accent);
+      padding-left: 1rem;
+    }
+    .section-title i {
+      margin-right: 10px;
+      color: var(--secondary);
+    }
+
+    /* poetry cards */
+    .poetry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 2rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .poem-card {
+      background: var(--card-bg);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px var(--shadow);
+      transition: 0.25s ease;
+      border: 1px solid var(--border-light);
+    }
+    .poem-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 34px rgba(44, 62, 80, 0.08);
+    }
+    .poem-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #ddd2cb;
+    }
+    .poem-card-content {
+      padding: 1.2rem 1.4rem 1.4rem;
+    }
+    .poem-card h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+    .poem-card .meta {
+      font-size: 0.8rem;
+      color: #7a6b63;
+      display: flex;
+      gap: 0.8rem;
+      margin: 0.3rem 0 0.5rem;
+      flex-wrap: wrap;
+    }
+    .poem-card .excerpt {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      margin: 0.5rem 0 1rem;
+      line-height: 1.5;
+    }
+    .poem-card .btn-small {
+      background: #f0ebe7;
+      color: var(--secondary);
+      padding: 0.3rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--border-light);
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .poem-card .btn-small:hover {
+      background: var(--secondary);
+      color: white;
+      border-color: var(--secondary);
+    }
+
+    /* Google Form comment button */
+    .google-form-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 500;
+      transition: 0.2s;
+      border: 1px solid transparent;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+    }
+    .google-form-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(230, 126, 34, 0.3);
+    }
+    .google-form-btn i {
+      margin-right: 6px;
+    }
+
+    /* gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0 2rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+      border: 1px solid var(--border-light);
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+    }
+
+    /* literary cards */
+    .literary-card {
+      background: #faf8f6;
+      padding: 1.5rem;
+      border-radius: 28px;
+      border-left: 8px solid var(--accent);
+      margin: 1rem 0;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+    .literary-card .quote {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--text-dark);
+    }
+    .literary-card .source {
+      margin-top: 0.4rem;
+      color: var(--text-soft);
+      font-weight: 300;
+    }
+
+    /* "শুধু তোমার জন্য" section */
+    .for-you-section {
+      background: linear-gradient(135deg, #f5f0eb 0%, #ede7e0 100%);
+      border-radius: 48px;
+      padding: 2.5rem 2.2rem;
+      margin: 2.5rem 0 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 30px var(--shadow);
+      border: 1px solid var(--border-light);
+    }
+    .for-you-section::before {
+      content: "❤️";
+      font-size: 6rem;
+      position: absolute;
+      right: -20px;
+      bottom: -30px;
+      opacity: 0.04;
+      transform: rotate(8deg);
+    }
+    .for-you-section .heart-icon {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-right: 12px;
+    }
+    .for-you-section .subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--text-soft);
+      margin-bottom: 1.2rem;
+      letter-spacing: 1px;
+    }
+    .for-you-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .for-you-grid .text-content {
+      flex: 2;
+      min-width: 240px;
+    }
+    .for-you-grid .text-content p {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      margin-bottom: 1rem;
+      line-height: 1.9;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .for-you-grid .text-content .signature {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--secondary);
+      margin-top: 0.8rem;
+      text-align: right;
+      font-style: italic;
+    }
+    .for-you-grid .image-side {
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+    }
+    .for-you-grid .image-side img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 40px 12px 40px 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      border: 2px solid white;
+      transition: 0.3s;
+    }
+    .for-you-grid .image-side img:hover {
+      transform: scale(1.02) rotate(-1deg);
+    }
+    .floating-hearts {
+      position: absolute;
+      font-size: 1.8rem;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .floating-hearts:nth-child(1) { top: 10%; left: 5%; transform: rotate(-12deg); }
+    .floating-hearts:nth-child(2) { bottom: 15%; right: 8%; transform: rotate(20deg); font-size: 3rem; }
+
+    /* ===== MAP - FULBARI, DINAJPUR ===== */
+    .map-container {
+      background: #f0ece6;
+      border-radius: 30px;
+      padding: 0.5rem;
+      margin: 1rem 0 2rem;
+      border: 1px solid var(--border-light);
+      overflow: hidden;
+      position: relative;
+      min-height: 280px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 320px;
+      border: none;
+      border-radius: 24px;
+      display: block;
+    }
+
+    footer {
+      background: var(--primary);
+      color: #e6dfd8;
+      padding: 2.5rem 0 1.8rem;
+      margin-top: 3rem;
+      border-radius: 40px 40px 0 0;
+    }
+    footer .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    footer .social i {
+      font-size: 1.6rem;
+      margin-right: 1rem;
+      color: #c9bfb7;
+      transition: 0.2s;
+    }
+    footer .social i:hover {
+      color: white;
+    }
+    .footer-copy {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #4a403a;
+      padding-top: 1.5rem;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: block; }
+      .mobile-menu.open { display: flex; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .tagline { font-size: 1.3rem; }
+      .poetry-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-title { font-size: 1.7rem; }
+      .for-you-grid { flex-direction: column; text-align: center; }
+      .for-you-grid .text-content p { border-left: none; padding-left: 0; }
+      .for-you-grid .text-content .signature { text-align: center; }
+      .map-container iframe { height: 220px; }
+      .scrolling-bar .track {
+        animation-duration: 45s;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-menu { display: none !important; }
+    }
+
+    .like-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #ac7a6e;
+      transition: 0.2s;
+      margin-right: 1rem;
+    }
+    .like-btn:hover { color: var(--secondary); }
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    .tag-cloud span {
+      background: #f0ebe7;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+    .config-note {
+      background: #f5f0eb;
+      border-radius: 30px;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      border: 1px dashed #c9bfb7;
+      margin: 1.5rem 0;
+    }
+
+    /* comment section with Google Form */
+    .comment-google-section {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 32px;
+      margin: 2rem 0;
+      border: 1px solid var(--border-light);
+      text-align: center;
+    }
+    .comment-google-section h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .comment-google-section p {
+      color: var(--text-soft);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== TOP SCROLLING TEXT - SLOWER ===== -->
+  <div class="scrolling-bar">
+    <div class="track">
+      <span>“মনের না বলা কথাগুলো, কবিতার পাতায়…”</span>
+      <span>“কিছু অনুভূতি শুধু কবিতাতেই বলা যায়…”</span>
+      <span>“তুমি থাকো কিংবা না থাকো, কবিতায় তুমি থেকেই যাও…”</span>
+      <span>“ভালোবাসা কখনো হারিয়ে যায় না, শুধু স্মৃতি হয়ে থাকে…”</span>
+      <span>“প্রতি শব্দে লুকিয়ে আছে ভালোবাসার গল্প…”</span>
+      <span>“তোমার জন্য লেখা প্রতিটি কবিতা আমার মনের জানালা…”</span>
+    </div>
+  </div>
+
+  <!-- header -->
+  <header>
+    <div class="container header-flex">
+      <div class="logo"><i class="fas fa-moon"></i> মনের জানালা</div>
+      <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+      <nav>
+        <a href="#">হোম</a>
+        <a href="#">আমার কবিতা</a>
+        <a href="#">প্রেমের কবিতা</a>
+        <a href="#">অনুভূতির কবিতা</a>
+        <a href="#">বাংলা সাহিত্য</a>
+        <a href="#">শুধু তোমার জন্য</a>
+        <a href="#">যোগাযোগ</a>
+      </nav>
+    </div>
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#">হোম</a><a href="#">আমার কবিতা</a><a href="#">প্রেমের কবিতা</a>
+      <a href="#">অনুভূতির কবিতা</a><a href="#">বাংলা সাহিত্য</a>
+      <a href="#">শুধু তোমার জন্য</a><a href="#">যোগাযোগ</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- hero -->
+    <section class="hero">
+      <h1>মনের জানালা</h1>
+      <div class="tagline">“মনের না বলা কথাগুলো, কবিতার পাতায়…”</div>
+      <p>“কিছু কথা মুখে বলা যায় না। কিছু অনুভূতি শুধু শব্দ হয়ে জন্ম নেয়। সেই না বলা কথাগুলোই এখানে কবিতা হয়ে বেঁচে থাকবে।”</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn">আমার কবিতা পড়ুন</a>
+        <a href="#" class="btn btn-outline">শুধু তোমার জন্য</a>
+      </div>
+    </section>
+
+    <!-- featured poetry -->
+    <h2 class="section-title"><i class="fas fa-feather-alt"></i> ✍️ নির্বাচিত কবিতা</h2>
+    <div class="poetry-grid" id="poetryGrid">
+      <!-- cards dynamically from sample -->
+    </div>
+
+    <!-- categories -->
+    <div class="tag-cloud" style="margin:0 0 1.5rem">
+      <span>❤️ প্রেমের কবিতা</span><span>💔 বিরহের কবিতা</span><span>🌙 অনুভূতির কবিতা</span>
+      <span>🌿 প্রকৃতির কবিতা</span><span>✉️ চিঠির মতো কবিতা</span><span>✨ ছোট কবিতা</span><span>📖 বাংলা সাহিত্য</span>
+    </div>
+
+    <!-- gallery -->
+    <h2 class="section-title"><i class="fas fa-images"></i> 📷 অনুভূতির ছবি</h2>
+    <div class="gallery-grid" id="galleryGrid"></div>
+
+    <!-- rabindranath -->
+    <h2 class="section-title"><i class="fas fa-book-open"></i> 📖 রবীন্দ্রনাথের প্রেমের কবিতা</h2>
+    <div class="literary-card">
+      <div class="quote">“তোমার স্পর্শে আমার প্রাণের সমস্ত বীণা বেজে ওঠে, কিন্তু আমি কথা বলতে পারি না।”</div>
+      <div class="source">— রবীন্দ্রনাথ ঠাকুর, <em>চিত্রাঙ্গদা</em></div>
+    </div>
+    <div style="text-align:right"><a href="#" class="btn-small" style="background:#f0ebe7;padding:0.4rem 1.8rem;border-radius:40px;color:var(--secondary);">আরও পড়ুন</a></div>
+
+    <!-- nazrul -->
+    <h2 class="section-title"><i class="fas fa-book"></i> 📖 নজরুলের প্রেমের কবিতা</h2>
+    <div class="literary-card">
+      <div class="quote">“আমি চাই তুমি, তুমি চাও মোরে, এই ভুবনে কে জানে? তুমি আমার, আমি তোমার—এই কথা কে মানে?”</div>
+      <div class="source">— কাজী নজরুল ইসলাম, <em>প্রেমের কবিতা</em></div>
+    </div>
+    <div style="text-align:right"><a href="#" class="btn-small" style="background:#f0ebe7;padding:0.4rem 1.8rem;border-radius:40px;color:var(--secondary);">আরও পড়ুন</a></div>
+
+    <!-- "শুধু তোমার জন্য" section -->
+    <section class="for-you-section">
+      <div class="floating-hearts">💕</div>
+      <div class="floating-hearts">🌙</div>
+      <h2 style="font-size:2rem; font-weight:600; color:var(--primary); margin-bottom:0.2rem;">
+        <span class="heart-icon">💖</span> শুধু তোমার জন্য
+      </h2>
+      <div class="subtitle">— প্রতিটি শব্দে লুকিয়ে আছে তোমার জন্য বলা কিছু না বলা কথা</div>
+
+      <div class="for-you-grid">
+        <div class="text-content">
+          <p>
+            “তোমার জন্য লিখি আমি প্রতিটি কবিতা—যেন তুমি আমার মনের জানালা দিয়ে দেখতে পাও 
+            সবুজ বৃষ্টি, চাঁদনি রাত, আর আমাদের স্মৃতির নদী। 
+            তুমি শুধু প্রেমিকা নও, তুমি আমার প্রেরণা, আমার লেখার কারণ। 
+            প্রতিটি শব্দে তোমার গন্ধ, প্রতিটি ছন্দে তোমার স্পর্শ। 
+            জানো, তুমি আমার সবচেয়ে সুন্দর কবিতা—যেটা আমি সারাজীবন লিখে যেতে চাই।”
+          </p>
+          <p style="font-size:0.95rem; color:var(--text-soft); border-left-color: var(--secondary);">
+            “তুমি এলে আমার জীবন থেকে সব খরা মুছে যায়, 
+            তুমি ফিরে গেলে আবার বসন্ত ফিরে আসে। 
+            তাই তো বলি—তুমি আমার অনুপ্রেরণা, আমার মনের জানালার আলো।”
+          </p>
+          <div class="signature">— তোমারই কবি</div>
+        </div>
+        <div class="image-side">
+          <img src="Tomarjonno.png" alt="Romantic couple silhouette" loading="lazy">
+          <div style="margin-top:0.8rem; font-size:0.9rem; color:var(--text-soft);">“তুমি আমার প্রতিটি কবিতার প্রথম অনুভূতি”</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GOOGLE FORM COMMENT SECTION ===== -->
+    <div class="comment-google-section">
+      <h3><i class="fas fa-comment" style="color:var(--secondary);"></i> আপনার মন্তব্য দিন</h3>
+      <p>আপনার মূল্যবান মতামত আমাদের জন্য গুরুত্বপূর্ণ। নিচের বাটনে ক্লিক করে গুগল ফর্মে আপনার মন্তব্য লিখুন।</p>
+      <!-- REPLACE THE ACTION URL WITH YOUR OWN GOOGLE FORM LINK -->
+      <a href="https://docs.google.com/forms/d/1bPvvxazl5fwUvsXmBejSAyE7EgtdrhBPVaYS5TogQFU/edit#responses" target="_blank" class="google-form-btn">
+        <i class="fas fa-pen-fancy"></i> মন্তব্য লিখুন
+      </a>
+      <p style="margin-top:1rem; font-size:0.85rem; color:#7a6b63;">
+        <i class="fas fa-shield-alt"></i> আপনার মতামত গোপন রাখা হবে
+      </p>
+    </div>
+
+    <!-- like demo -->
+    <div style="display:flex; gap:0.5rem; align-items:center; margin:1rem 0 2rem; padding:0.5rem 1rem; background:var(--card-bg); border-radius:40px; border:1px solid var(--border-light);">
+      <button class="like-btn"><i class="fas fa-heart"></i> ভালো লেগেছে</button> <span>৩২</span>
+      <span style="margin-left:auto; font-size:0.85rem; color:#7a6b63;"><i class="fas fa-share-alt"></i> শেয়ার করুন</span>
+    </div>
+
+    <!-- ===== MAP - FULBARI, DINAJPUR ===== -->
+    <h2 class="section-title"><i class="fas fa-map-pin"></i> 📍 আমার অবস্থান</h2>
+    <div class="map-container" id="mapContainer">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28627.895026503297!2d88.62077360972715!3d26.13173789776947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4019fd2d6b9f9%3A0x8e6f2b6b8f5c5b3b!2sPhulbari%2C%20Dinajpur%2C%20Bangladesh!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        title="ফুলবাড়ী, দিনাজপুর - মানচিত্র">
+      </iframe>
+    </div>
+    <p style="text-align:right; font-size:0.85rem; color:var(--text-soft); margin-top:-0.5rem;">
+      <i class="fas fa-map-marker-alt" style="color:var(--secondary);"></i> ফুলবাড়ী, দিনাজপুর, বাংলাদেশ
+    </p>
+
+    <!-- contact -->
+    <h2 class="section-title"><i class="fas fa-envelope"></i> ✉️ যোগাযোগ করুন</h2>
+    <form style="background:var(--card-bg);padding:1.8rem;border-radius:40px;margin-bottom:2rem;border:1px solid var(--border-light);">
+      <input type="text" placeholder="নাম" style="width:100%;padding:0.8rem;border-radius:40px;border:1px solid var(--border-light);margin:0.3rem 0;background:white;">
+      <input type="email" placeholder="ইমেইল" style="width:100%;padding:0.8rem;border-radius:40px;border:1px solid var(--border-light);margin:0.3rem 0;background:white;">
+      <textarea rows="4" placeholder="মেসেজ" style="width:100%;padding:0.8rem;border-radius:24px;border:1px solid var(--border-light);margin:0.3rem 0;background:white;"></textarea>
+      <button class="btn" style="border:none;cursor:pointer;">পাঠান</button>
+    </form>
+
+    <!-- config note -->
+    <div class="config-note">
+      <i class="fas fa-cog"></i> <strong>কনফিগারেশন:</strong> WEBSITE_NAME, TAGLINE, SOCIAL URL, LOCATION, ইত্যাদি সহজেই পরিবর্তনযোগ্য।
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer>
+    <div class="container footer-flex">
+      <div>
+        <div style="font-size:1.4rem;font-weight:600;"><i class="fas fa-moon"></i> মনের জানালা</div>
+        <div style="font-weight:300;margin:0.2rem 0 0.8rem;">“মনের না বলা কথাগুলো, কবিতার পাতায়…”</div>
+      </div>
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-copy container">
+      © 2026 মনের জানালা — সর্বস্বত্ব সংরক্ষিত।
+    </div>
+  </footer>
+
+  <script>
+    // hamburger
+    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+
+    // sample poems
+    const poems = [
+      { title: 'তোমার অপেক্ষায়', excerpt: 'অপেক্ষা করে রইলাম সারা দিন...', category: 'প্রেমের কবিতা', date: '১২ জানু ২০২৬', author: 'মনন' },
+      { title: 'শেষ বিকেলের তুমি', excerpt: 'বিকেলের আলোয় তোমার মুখ খুঁজি...', category: 'অনুভূতির কবিতা', date: '০৫ ফেব্রু ২০২৬', author: 'মনন' },
+      { title: 'বৃষ্টিতে তোমার কথা', excerpt: 'বৃষ্টি পড়ে, মনে পড়ে তোমায়...', category: 'প্রকৃতির কবিতা', date: '২০ মার্চ ২০২৬', author: 'মনন' },
+      { title: 'চাঁদের কাছে তোমার গল্প', excerpt: 'চাঁদ জানে আমার মনের কথা...', category: 'প্রেমের কবিতা', date: '০১ এপ্রিল ২০২৬', author: 'মনন' },
+    ];
+
+    const grid = document.getElementById('poetryGrid');
+    poems.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'poem-card';
+      card.innerHTML = `
+        <img src="https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop&crop=center" alt="poem image" loading="lazy">
+        <div class="poem-card-content">
+          <h3>${p.title}</h3>
+          <div class="meta"><span>${p.category}</span><span>${p.date}</span><span>${p.author}</span></div>
+          <div class="excerpt">“${p.excerpt}”</div>
+          <a href="#" class="btn-small">পুরো কবিতা পড়ুন</a>
+          <div style="margin-top:0.8rem;">
+            <a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform" target="_blank" style="font-size:0.8rem; color:var(--secondary);">
+              <i class="fas fa-comment"></i> মন্তব্য করুন
+            </a>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // gallery images (pexels free)
+    const gallery = document.getElementById('galleryGrid');
+    const imgUrls = [
+      'https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop',
+      'https://images.pexels.com/photos/1037994/pexels-photo-1037994.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop',
+      'https://images.pexels.com/photos/2189833/pexels-photo-2189833.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop',
+      'https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop',
+      'https://images.pexels.com/photos/1468379/pexels-photo-1468379.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop',
+      'https://images.pexels.com/photos/2641718/pexels-photo-2641718.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop'
+    ];
+    imgUrls.forEach(url => {
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = 'রোমান্টিক ছবি';
+      img.loading = 'lazy';
+      gallery.appendChild(img);
+    });
+  </script>
+</body>
+</html>
