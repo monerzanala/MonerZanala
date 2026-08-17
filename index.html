@@ -765,10 +765,42 @@
 
     // sample poems
     const poems = [
-      { title: 'তোমার অপেক্ষায়', excerpt: 'তোমার অপেক্ষায় দিনগুলি যেন...', category: 'প্রেমের কবিতা', date: '১২ জানু ২০২৬', author: 'মনন' },
-      { title: 'শেষ বিকেলের তুমি', excerpt: 'বিকেলের আলোয় তোমার মুখ খুঁজি...', category: 'অনুভূতির কবিতা', date: '০৫ ফেব্রু ২০২৬', author: 'মনন' },
-      { title: 'বৃষ্টিতে তোমার কথা', excerpt: 'বৃষ্টি পড়ে, মনে পড়ে তোমায়...', category: 'প্রকৃতির কবিতা', date: '২০ মার্চ ২০২৬', author: 'মনন' },
-      { title: 'চাঁদের কাছে তোমার গল্প', excerpt: 'চাঁদ জানে আমার মনের কথা...', category: 'প্রেমের কবিতা', date: '০১ এপ্রিল ২০২৬', author: 'মনন' },
+      {
+        title: 'তোমার অপেক্ষায়',
+        excerpt: 'তোমার অপেক্ষায় দিনগুলি যেন...',
+        category: 'প্রেমের কবিতা',
+        date: '১২ জানু ২০২৬',
+        author: 'মনন',
+        link: 'opekkha.html',
+        image: 'opekkha.png'
+      },
+      {
+        title: 'শেষ বিকেলের তুমি',
+        excerpt: 'বিকেলের আলোয় তোমার মুখ খুঁজি...',
+        category: 'অনুভূতির কবিতা',
+        date: '০৫ ফেব্রু ২০২৬',
+        author: 'মনন',
+        link: 'bikel.html',
+        image: 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop&crop=center'
+      },
+      {
+        title: 'বৃষ্টিতে তোমার কথা',
+        excerpt: 'বৃষ্টি পড়ে, মনে পড়ে তোমায়...',
+        category: 'প্রকৃতির কবিতা',
+        date: '২০ মার্চ ২০২৬',
+        author: 'মনন',
+        link: 'brishti.html',
+        image: 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop&crop=center'
+      },
+      {
+        title: 'চাঁদের কাছে তোমার গল্প',
+        excerpt: 'চাঁদ জানে আমার মনের কথা...',
+        category: 'প্রেমের কবিতা',
+        date: '০১ এপ্রিল ২০২৬',
+        author: 'মনন',
+        link: 'chad.html',
+        image: 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop&crop=center'
+      }
     ];
 
     const grid = document.getElementById('poetryGrid');
@@ -776,12 +808,12 @@
       const card = document.createElement('div');
       card.className = 'poem-card';
       card.innerHTML = `
-        <img src="https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop&crop=center" alt="poem image" loading="lazy">
+        <img src="${p.image}" alt="${p.title}" loading="lazy">
         <div class="poem-card-content">
           <h3>${p.title}</h3>
           <div class="meta"><span>${p.category}</span><span>${p.date}</span><span>${p.author}</span></div>
           <div class="excerpt">“${p.excerpt}”</div>
-          <a href="#" class="btn-small">পুরো কবিতা পড়ুন</a>
+          <a href="${p.link}" class="btn-small">পুরো কবিতা পড়ুন</a>
           <div style="margin-top:0.8rem;">
             <!-- আপনার দেওয়া গুগল ফর্মের লিংক ব্যবহার করা হয়েছে -->
             <a href="https://docs.google.com/forms/d/1bPvvxazl5fwUvsXmBejSAyE7EgtdrhBPVaYS5TogQFU/edit#responses" target="_blank" style="font-size:0.8rem; color:var(--secondary);">
