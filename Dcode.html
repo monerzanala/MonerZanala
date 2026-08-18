@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secret Code Decoder</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(181, 76, 255, .20), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(255, 79, 174, .18), transparent 30%),
+        linear-gradient(135deg, #08030d, #170a20, #09040e);
+}
+
+
+/* =========================
+   FLOATING PARTICLES
+========================= */
+
+.particle {
+    position: fixed;
+
+    width: 3px;
+    height: 3px;
+
+    background: #fff;
+
+    border-radius: 50%;
+
+    opacity: .4;
+
+    animation: float 8s infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0);
+        opacity: .15;
+    }
+
+    50% {
+        transform: translateY(-100px);
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: .15;
+    }
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.container {
+    width: min(92%, 520px);
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,.07);
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55),
+        inset 0 0 30px rgba(255,255,255,.025);
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.lock {
+    font-size: 50px;
+
+    margin-bottom: 12px;
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+h1 {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    color: #cfc3d8;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-wrapper {
+    position: relative;
+}
+
+input {
+    width: 100%;
+
+    padding: 17px 50px 17px 17px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,.20);
+
+    outline: none;
+
+    background: rgba(0,0,0,.35);
+
+    color: #fff;
+
+    text-align: center;
+
+    font-size: 21px;
+
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    transition: .3s;
+}
+
+input::placeholder {
+    color: #777;
+
+    letter-spacing: 3px;
+}
+
+input:focus {
+    border-color: #d69cff;
+
+    box-shadow:
+        0 0 20px rgba(214,156,255,.25);
+}
+
+
+/* Clear button */
+
+.clear-btn {
+    position: absolute;
+
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 30px;
+    height: 30px;
+
+    margin: 0;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.08);
+
+    color: #aaa;
+
+    font-size: 15px;
+
+    display: none;
+
+    box-shadow: none;
+}
+
+.clear-btn:hover {
+    background: rgba(255,255,255,.16);
+
+    transform: translateY(-50%);
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.decode-btn {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(135deg, #9c4dff, #e45bba);
+
+    transition: .3s;
+
+    box-shadow:
+        0 8px 25px rgba(180, 70, 255, .18);
+}
+
+.decode-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 35px rgba(197,91,255,.35);
+}
+
+.decode-btn:active {
+    transform: scale(.98);
+}
+
+
+/* =========================
+   RESULT BOX
+========================= */
+
+.result-box {
+    margin-top: 30px;
+
+    padding: 24px 20px;
+
+    border-radius: 20px;
+
+    background: rgba(0,0,0,.25);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    min-height: 145px;
+}
+
+.label {
+    font-size: 11px;
+
+    color: #999;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   RESULT TEXT
+========================= */
+
+#result {
+    min-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 34px;
+
+    letter-spacing: 6px;
+
+    font-weight: 800;
+
+    color: #f3c7ff;
+
+    text-shadow:
+        0 0 20px rgba(230,150,255,.5);
+}
+
+.result-letter {
+    opacity: 0;
+
+    transform: translateY(12px) scale(.8);
+
+    animation: letterReveal .4s forwards;
+}
+
+@keyframes letterReveal {
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================
+   MAPPING
+========================= */
+
+.mapping {
+    margin-top: 22px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+}
+
+.char {
+    padding: 7px 10px;
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,.07);
+
+    border: 1px solid rgba(255,255,255,.07);
+
+    font-size: 13px;
+
+    opacity: 0;
+
+    transform: translateY(10px);
+}
+
+.char.show {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    transition: .4s;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error {
+    color: #ff9b9b;
+
+    margin-top: 12px;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    margin-top: 25px;
+
+    font-size: 11px;
+
+    color: #777;
+
+    letter-spacing: .3px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 500px) {
+
+    .container {
+        padding: 30px 20px;
+
+        border-radius: 24px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .lock {
+        font-size: 42px;
+    }
+
+    #result {
+        font-size: 28px;
+
+        letter-spacing: 4px;
+    }
+
+    input {
+        font-size: 18px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     BACKGROUND PARTICLES
+========================= -->
+
+<div class="particle"
+     style="left:10%; top:70%; animation-delay:0s;">
+</div>
+
+<div class="particle"
+     style="left:20%; top:30%; animation-delay:1s;">
+</div>
+
+<div class="particle"
+     style="left:80%; top:60%; animation-delay:2s;">
+</div>
+
+<div class="particle"
+     style="left:70%; top:20%; animation-delay:3s;">
+</div>
+
+<div class="particle"
+     style="left:45%; top:80%; animation-delay:4s;">
+</div>
+
+<div class="particle"
+     style="left:90%; top:30%; animation-delay:5s;">
+</div>
+
+
+<!-- =========================
+     MAIN CONTAINER
+========================= -->
+
+<div class="container">
+
+
+    <div class="lock">
+        🔐
+    </div>
+
+
+    <h1>
+        Secret Code Decoder
+    </h1>
+
+
+    <p class="subtitle">
+        Enter your secret code and reveal its hidden meaning.
+    </p>
+
+
+    <!-- =========================
+         INPUT
+    ========================= -->
+
+    <div class="input-wrapper">
+
+        <input
+            id="code"
+            type="text"
+            maxlength="20"
+            placeholder="ENTER CODE"
+            autocomplete="off"
+            spellcheck="false"
+        >
+
+        <button
+            id="clearBtn"
+            class="clear-btn"
+            onclick="clearCode()">
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         DECODE BUTTON
+    ========================= -->
+
+    <button
+        class="decode-btn"
+        onclick="decodeCode()">
+
+        ✨ Decode Secret
+
+    </button>
+
+
+    <!-- =========================
+         RESULT
+    ========================= -->
+
+    <div class="result-box">
+
+
+        <div class="label">
+            Decoded Message
+        </div>
+
+
+        <div id="result">
+            •••••••
+        </div>
+
+
+        <div
+            id="mapping"
+            class="mapping">
+        </div>
+
+
+        <div
+            id="error"
+            class="error">
+        </div>
+
+
+    </div>
+
+
+    <div class="footer">
+        A little code can hide a beautiful secret.
+    </div>
+
+
+</div>
+
+
+<script>
+
+/*
+====================================================
+             SECRET CODE SYSTEM
+====================================================
+
+5 → S
+N → N
+1 → I
+G → G
+0 → D
+8 → H
+A → A
+
+MAIN SECRET CODE:
+
+5N1G08A
+
+DECODE:
+
+5N1G08A → SNIGDHA
+
+====================================================
+*/
+
+
+/* =========================
+   SECRET MAP
+========================= */
+
+const secretMap = {
+
+    "5": "S",
+
+    "N": "N",
+
+    "1": "I",
+
+    "G": "G",
+
+    "0": "D",
+
+    "8": "H",
+
+    "A": "A"
+
+};
+
+
+/* =========================
+   DECODE FUNCTION
+========================= */
+
+function decodeCode() {
+
+    const input =
+        document
+        .getElementById("code")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    const result =
+        document.getElementById("result");
+
+
+    const mapping =
+        document.getElementById("mapping");
+
+
+    const error =
+        document.getElementById("error");
+
+
+    /* Reset */
+
+    result.innerHTML = "";
+
+    mapping.innerHTML = "";
+
+    error.textContent = "";
+
+
+    /* Empty input */
+
+    if (!input) {
+
+        result.textContent = "•••••••";
+
+        return;
+    }
+
+
+    let decoded = "";
+
+    let valid = true;
+
+
+    /* =========================
+       CHARACTER DECODING
+    ========================= */
+
+    for (let char of input) {
+
+
+        if (
+            Object.prototype.hasOwnProperty
+            .call(secretMap, char)
+        ) {
+
+
+            decoded += secretMap[char];
+
+
+            /* Mapping box */
+
+            const box =
+                document.createElement("div");
+
+
+            box.className = "char";
+
+
+            box.textContent =
+                `${char} → ${secretMap[char]}`;
+
+
+            mapping.appendChild(box);
+
+
+            /* Mapping animation */
+
+            setTimeout(() => {
+
+                box.classList.add("show");
+
+            }, 100);
+
+
+        }
+
+        else {
+
+            valid = false;
+
+        }
+
+    }
+
+
+    /* =========================
+       INVALID CODE
+    ========================= */
+
+    if (!valid) {
+
+        result.textContent = "UNKNOWN";
+
+        error.textContent =
+            "This code contains an unknown character.";
+
+        return;
+    }
+
+
+    /* =========================
+       ANIMATED RESULT
+    ========================= */
+
+    [...decoded].forEach(
+        (letter, index) => {
+
+            setTimeout(() => {
+
+                const span =
+                    document.createElement("span");
+
+                span.className =
+                    "result-letter";
+
+                span.textContent =
+                    letter;
+
+                result.appendChild(span);
+
+            }, index * 180);
+
+        }
+    );
+
+}
+
+
+/* =========================
+   CLEAR FUNCTION
+========================= */
+
+function clearCode() {
+
+    const input =
+        document.getElementById("code");
+
+    const result =
+        document.getElementById("result");
+
+    const mapping =
+        document.getElementById("mapping");
+
+    const error =
+        document.getElementById("error");
+
+    const clearBtn =
+        document.getElementById("clearBtn");
+
+
+    input.value = "";
+
+    result.textContent = "•••••••";
+
+    mapping.innerHTML = "";
+
+    error.textContent = "";
+
+    clearBtn.style.display = "none";
+
+    input.focus();
+}
+
+
+/* =========================
+   SHOW / HIDE CLEAR BUTTON
+========================= */
+
+document
+.getElementById("code")
+.addEventListener(
+    "input",
+    function() {
+
+        const clearBtn =
+            document.getElementById("clearBtn");
+
+        if (this.value.length > 0) {
+
+            clearBtn.style.display = "block";
+
+        } else {
+
+            clearBtn.style.display = "none";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+document
+.getElementById("code")
+.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            decodeCode();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
